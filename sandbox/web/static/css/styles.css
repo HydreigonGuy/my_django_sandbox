@@ -1,0 +1,21 @@
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    display: block;
+    margin: 0;
+    width: 100%;
+    background-color: gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.top-bar h2 {
+    color: white;
+    margin: 0;
+    display: inline;
+    margin: 30px;
+}

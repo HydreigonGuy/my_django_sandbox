@@ -1,0 +1,21 @@
+version: '3'
+services:
+  sandbox_app:
+    build: .
+    ports:
+      - '8000:8000'
+    depends_on:
+      - sandbox_db
+    volumes:
+      - ./sandbox/:/app/
+  sandbox_db:
+    image: postgres:latest
+    volumes:
+      - sandbox_postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=sandbox_db
+
+volumes:
+  sandbox_postgres_data:
