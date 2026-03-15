@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web',
+    'button_of_nothing',
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [
     "./web/static",
+    "./button_of_nothing/static",
 ]
 
 STATIC_URL = 'static/'
