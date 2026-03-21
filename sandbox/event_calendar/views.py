@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import loader
 from event_calendar.models import Event
 import json
 from datetime import date, timedelta, time, datetime
@@ -19,14 +18,19 @@ def get_events(request):
     query_end = query_start + timedelta(days=7)
     if request.GET.get("end"):
         query_end = date.strptime(request.GET["end"], '%d/%m/%Y')
+    # Change date format to datetime format
+    query_start = datetime.combine(query_start, time.min)
+    query_end = datetime.combine(query_end, time.min)
 
     events = Event.objects.filter(
-        start__gt=datetime.combine(query_start, time.min),
-        end__lt=datetime.combine(query_end, time.min)
+        start__gt=query_start,
+        end__lt=query_end
     )
 
     data = {
-        "events":[]
+        "events":[],
+        "start":query_start.strftime("%Y-%m-%d"),
+        "end":query_end.strftime("%Y-%m-%d")
     }
     # Load events in return data
     for event in events:

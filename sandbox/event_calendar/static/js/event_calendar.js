@@ -18,16 +18,35 @@ function create_new_event_form() {
 }
 
 
+function format_calendar_day_events(events) {
+    formatted = ``;
+
+    for (i in events) {
+        evt = events[i];
+        formatted += `
+        <p>${evt.name}</p>
+        <p>${evt.description}</p>
+        `
+    }
+    return formatted;
+}
+
+
 function fill_calendar_data(calendar_info) {
     formatted = "";
-    for (i in calendar_info.events) {
-        evt = calendar_info.events[i];
-        formatted += `
-            <div>
-                <b>${evt.name}</b>
-                <p>${evt.description}</p>
-            </div>
-        `;
+    day = new Date(calendar_info.start);
+    end = new Date(calendar_info.end);
+    while (day < end) {
+        formatted += `<div class="day_container">
+            <b>${day.toLocaleDateString()}</b>
+            ${format_calendar_day_events(
+                calendar_info.events.filter(function (evt) {
+                    d = new Date(evt.start);
+                    return d.toLocaleDateString() == day.toLocaleDateString()
+                })
+            )}
+        </div>`;
+        day.setDate(day.getDate() + 1);
     }
     document.getElementById("calendar_body").innerHTML = formatted;
 }
