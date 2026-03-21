@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'web',
     'button_of_nothing',
+    'event_calendar',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,7 @@ USE_TZ = True
 STATICFILES_DIRS = [
     "./web/static",
     "./button_of_nothing/static",
+    "./event_calendar/static",
 ]
 
 STATIC_URL = 'static/'

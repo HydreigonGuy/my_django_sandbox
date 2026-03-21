@@ -1,0 +1,23 @@
+<html>
+    <head>
+        {% load static %}
+        {% csrf_token %}
+        <script src="{% static 'js/event_calendar.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <div class="top-bar">
+            <h2>Event Calendar</h2>
+            <a href="/">Go back to home menu</a>
+        </div>
+        <div>
+            <div>
+                <div id="new_event_form">
+                    <button onclick="create_new_event_form()">+ Create Event</button>
+                </div>
+            </div>
+            <div id="calendar_body">
+            </div>
+        </div>
+    </body>
+</html>
