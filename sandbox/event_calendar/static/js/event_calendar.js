@@ -90,5 +90,31 @@ function create_new_event() {
 
 
 window.onload = function () {
+    document.getElementById("new_event_form").innerHTML = `
+        <button onclick="form_overlay(
+            form_id='form_overlay_container',
+            form_name='Create Event',
+            submit_text='Create',
+            form=[
+                {
+                    'name':'name',
+                    'type':'text'
+                },
+                {
+                    'name':'description',
+                    'type':'text'
+                },
+                {
+                    'name':'start',
+                    'type':'datetime-local'
+                },
+                {
+                    'name':'end',
+                    'type':'datetime-local'
+                }
+            ]
+        )">+ Create Event</button>
+    `;
+
     retrieve_and_format_calendar_data();
 }
