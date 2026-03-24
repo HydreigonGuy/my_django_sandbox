@@ -3,8 +3,11 @@
         {% load static %}
         {% csrf_token %}
         <script src="{% static 'js/event_calendar.js' %}"></script>
+        <script src="{% static 'js/common/form_overlay.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <link rel="stylesheet" href="{% static 'css/event_calendar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components.css' %}">
+        <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     </head>
     <body>
         <div class="top-bar">
@@ -12,9 +15,10 @@
             <a href="/">Go back to home menu</a>
         </div>
         <div>
+            <div id="form_overlay_container"></div>
             <div>
                 <div id="new_event_form">
-                    <button onclick="create_new_event_form()">+ Create Event</button>
+                    <button onclick="form_overlay(form_id='form_overlay_container', submit_text='Create')">+ Create Event</button>
                 </div>
             </div>
             <div id="calendar_body">
