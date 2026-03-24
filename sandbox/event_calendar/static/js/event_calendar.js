@@ -60,12 +60,12 @@ function retrieve_and_format_calendar_data() {
 
 
 function create_new_event() {
-    name = document.getElementById("new_event_name").value;
-    description = document.getElementById("new_event_description").value;
-    start = document.getElementById("new_event_start").value;
-    end = document.getElementById("new_event_end").value;
+    name = document.getElementById("form_name").value;
+    description = document.getElementById("form_description").value;
+    start = document.getElementById("form_start").value;
+    end = document.getElementById("form_end").value;
 
-    document.getElementById("new_event_form").innerHTML = `...`;
+    set_form_sending();
     fetch("create", {
         method: 'POST',
         headers: {
@@ -81,9 +81,7 @@ function create_new_event() {
         })
     })
     .then(function (resp) {
-        document.getElementById("new_event_form").innerHTML = `
-        <button onclick="create_new_event_form()">+ Create Event</button>
-        `;
+        remove_form_overlay('form_overlay_container');
         retrieve_and_format_calendar_data();
     })
 }
@@ -112,7 +110,8 @@ window.onload = function () {
                     'name':'end',
                     'type':'datetime-local'
                 }
-            ]
+            ],
+            submit_function='create_new_event()'
         )">+ Create Event</button>
     `;
 

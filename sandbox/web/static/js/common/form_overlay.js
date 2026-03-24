@@ -7,7 +7,8 @@ function form_overlay(
     form_id="form_container",
     form_name="Form",
     submit_text="Submit",
-    form=[]
+    form=[],
+    submit_function,
 ) {
     document.getElementById(form_id).className = `form_overlay_background`;
 
@@ -15,7 +16,7 @@ function form_overlay(
     for (i in form) {
         field = form[i]
         form_fields += `
-            <span>${field.name}</span><input type="${field.type}"/><br>
+            <span>${field.name}</span><input id="form_${field.name}" type="${field.type}"/><br>
         `
     }
 
@@ -24,9 +25,14 @@ function form_overlay(
         <button class="close_button" onclick="remove_form_overlay('${form_id}')">x</button>
         <h2>${form_name}</h2>
         ${form_fields}
-        <button class="submit_button">${submit_text}</button>
+        <button id="form_button" onclick="${submit_function}" class="submit_button">${submit_text}</button>
     </div>
     `;
+}
+
+function set_form_sending() {
+    document.getElementById("form_button").disabled = `true`;
+    document.getElementById("form_button").innerHTML = `...`;
 }
 
 function remove_form_overlay(form_id) {
