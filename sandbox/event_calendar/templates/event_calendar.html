@@ -1,25 +1,27 @@
-<html>
-    <head>
-        {% load static %}
-        {% csrf_token %}
-        <script src="{% static 'js/event_calendar.js' %}"></script>
-        <script src="{% static 'js/common/form_overlay.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <link rel="stylesheet" href="{% static 'css/event_calendar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/components.css' %}">
-        <link rel="stylesheet" href="{% static 'css/forms.css' %}">
-    </head>
-    <body>
-        <div class="top-bar">
-            <h2>Event Calendar</h2>
-            <a href="/">Go back to home menu</a>
+
+{% extends "base.html" %}
+
+{% load static %}
+{% csrf_token %}
+
+{% block header %}
+    <script src="{% static 'js/event_calendar.js' %}"></script>
+    <script src="{% static 'js/common/form_overlay.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/event_calendar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
+{% block title %}
+Event Calendar
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div id="form_overlay_container"></div>
+        <div id="new_event_form">
         </div>
-        <div>
-            <div id="form_overlay_container"></div>
-            <div id="new_event_form">
-            </div>
-            <div id="calendar_body">
-            </div>
+        <div id="calendar_body">
         </div>
-    </body>
-</html>
+    </div>
+{% endblock %}

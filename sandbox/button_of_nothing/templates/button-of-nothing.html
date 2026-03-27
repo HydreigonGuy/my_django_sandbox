@@ -1,17 +1,19 @@
-<html>
-    <head>
-        {% load static %}
-        {% csrf_token %}
-        <script src="{% static 'js/button-of-nothing.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    </head>
-    <body>
-        <div class="top-bar">
-            <h2>Button of Nothing</h2>
-            <a href="/">Go back to home menu</a>
-        </div>
+
+{% extends "base.html" %}
+
+{% load static %}
+{% csrf_token %}
+
+{% block header %}
+    <script src="{% static 'js/button-of-nothing.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+Button of Nothing
+{% endblock %}
+
+{% block content %}
         <div>
             <div id="button_info_container"></div>
         </div>
-    </body>
-</html>
+{% endblock %}
