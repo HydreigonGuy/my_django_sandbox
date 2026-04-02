@@ -16,7 +16,9 @@ function form_overlay(
     for (i in form) {
         field = form[i]
         form_fields += `
+        <div class="form_field_container">
             <span>${field.name}</span><input id="form_${field.name}" type="${field.type}"/><br>
+        </div>
         `
     }
 

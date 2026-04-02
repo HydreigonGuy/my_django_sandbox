@@ -12,3 +12,19 @@
     background: none;
     border: none;
 }
+
+.form_field_container {
+    margin: 10px;
+}
+
+.form_field_container span {
+    width: 37%;
+    display: inline-block;
+    text-align: right;
+    margin-right: 3%;
+}
+
+.form_field_container input {
+    width: 60%;
+    text-align: left;
+}

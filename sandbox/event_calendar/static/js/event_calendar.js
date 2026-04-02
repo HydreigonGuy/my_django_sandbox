@@ -1,23 +1,4 @@
 
-function create_new_event_form() {
-    document.getElementById("new_event_form").innerHTML = `
-        <span>Name</span>
-        <input type="text" id="new_event_name">
-        <br>
-        <span>Description</span>
-        <input type="text" id="new_event_description">
-        <br>
-        <span>Start</span>
-        <input type="datetime-local" id="new_event_start">
-        <br>
-        <span>End</span>
-        <input type="datetime-local" id="new_event_end">
-        <br>
-        <button onclick="create_new_event()">Create</button>
-    `;
-}
-
-
 function format_calendar_day_events(events) {
     formatted = ``;
 
@@ -89,7 +70,7 @@ function create_new_event() {
 
 window.onload = function () {
     document.getElementById("new_event_form").innerHTML = `
-        <button onclick="form_overlay(
+        <button class="new_event_btn" onclick="form_overlay(
             form_id='form_overlay_container',
             form_name='Create Event',
             submit_text='Create',
