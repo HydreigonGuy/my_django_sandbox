@@ -2,8 +2,8 @@
 function format_calendar_day_events(events) {
     formatted = ``;
 
-    for (i in events) {
-        evt = events[i];
+    for (j in events) {
+        evt = events[j];
         formatted += `
         <p>${evt.name}</p>
         <p>${evt.description}</p>
@@ -13,19 +13,36 @@ function format_calendar_day_events(events) {
 }
 
 
+function create_day(day, events) {
+    formatted = ``
+    console.log(events)
+    for (i = 0; i  < 24; i += 1) {
+        hour = i
+        formatted += `
+        <div class="calendar_hour_box">
+            <p class="calendar_hour_name">${hour}</p>
+            ${format_calendar_day_events(events.filter(function (evt) {
+                return evt.start_time.split(":")[0] == `${hour}`
+            }
+            ))}
+        </div>
+        `;
+    }
+    return formatted
+}
+
+
 function fill_calendar_data(calendar_info) {
+    console.log(calendar_info)
     formatted = "";
     day = new Date(calendar_info.start);
     end = new Date(calendar_info.end);
     while (day < end) {
         formatted += `<div class="day_container">
             <b>${day.toLocaleDateString()}</b>
-            ${format_calendar_day_events(
-                calendar_info.events.filter(function (evt) {
-                    d = new Date(evt.start);
-                    return d.toLocaleDateString() == day.toLocaleDateString()
-                })
-            )}
+            ${create_day(day, calendar_info.events.filter(function (evt) {
+                    return evt.start_day == day.toISOString().split("T")[0]
+                }))}
         </div>`;
         day.setDate(day.getDate() + 1);
     }

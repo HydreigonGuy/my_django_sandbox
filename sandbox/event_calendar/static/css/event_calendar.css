@@ -1,7 +1,6 @@
 
 .day_container {
     width: 14%;
-    height: 300px;
     border: solid black 1px;
     display: inline-block;
     margin: 0;
@@ -19,4 +18,14 @@
     background-color: darkgray;
     color: white;
     border: none;
+}
+
+.calendar_hour_box {
+    border: 1px  solid black;
+    height: 100px;
+    padding: 0;
+}
+
+.calendar_hour_name {
+    margin: 2px;
 }

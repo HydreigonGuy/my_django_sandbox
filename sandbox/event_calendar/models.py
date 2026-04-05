@@ -16,8 +16,10 @@ class Event(models.Model):
 
     def format(self):
         return {
-            "start":self.start.strftime("%Y-%m-%d %H:%M"),
-            "end":self.end.strftime("%Y-%m-%d %H:%M"),
+            "start_day":self.start.strftime("%Y-%m-%d"),
+            "end_day":self.end.strftime("%Y-%m-%d"),
+            "start_time":self.start.strftime("%H:%M"),
+            "end_time":self.end.strftime("%H:%M"),
             "name":self.name,
             "description":self.description
         }
